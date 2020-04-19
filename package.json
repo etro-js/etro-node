@@ -13,5 +13,8 @@
     "node"
   ],
   "author": "clabe45",
-  "license": "GPL-3.0"
+  "license": "GPL-3.0",
+  "dependencies": {
+    "vidar": "^0.6.0"
+  }
 }

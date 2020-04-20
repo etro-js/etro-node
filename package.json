@@ -15,6 +15,7 @@
   "author": "clabe45",
   "license": "GPL-3.0",
   "dependencies": {
+    "puppeteer": "^3.0.0",
     "vidar": "^0.6.0"
   }
 }

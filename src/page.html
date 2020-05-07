@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script src="../node_modules/vidar/dist/vidar.js"></script>
+  <script>
+    (function () {
+      function readBlob (blob) {
+        return new Promise(function(resolve, reject) {
+          var fileReader = new FileReader()
+          fileReader.readAsArrayBuffer(blob)
+          fileReader.onerror = reject
+          fileReader.onload = function() {
+            // Convert to array (otherwise, it won't be sent to node correctly).
+            var typedArray = new Uint8Array(fileReader.result)
+            var array = Array.prototype.slice.call(typedArray)
+            resolve(array)
+          }
+        })
+      }
+
+      // Until Vidar supports exporting streams, use this custom method.
+      /**
+       * Exports the movie as a byte array
+       * @return {Promise<number[]>} the byte array
+       */
+      vd.Movie.prototype.recordRaw = function () {
+        var that = this
+        var args = arguments
+        return new Promise(function (resolve, reject) {
+          vd.Movie.prototype.record.apply(that, args)
+            .then(function (blob) {
+              readBlob(blob).then(resolve)
+            })
+        })
+      }
+    })()
+  </script>
+</head>
+<body>
+</body>
+</html>

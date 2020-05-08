@@ -21,6 +21,9 @@
       // Until Vidar supports exporting streams, use this custom method.
       /**
        * Exports the movie as a byte array
+       * The reason for this method is that passing blobs to node causes problems,
+       * so we pass the raw byte array of the movie to node.
+       *
        * @return {Promise<number[]>} the byte array
        */
       vd.Movie.prototype.recordRaw = function () {

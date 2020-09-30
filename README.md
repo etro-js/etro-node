@@ -29,6 +29,15 @@ vidarNode(() => {
 
 Runs `vidarFunction` in a puppeteer page. Each input source is converted to an html element (`<img>`, `<audio>` or `<video>`). The output is either written to the path or the callback is executed, depending on the type of `resultCallbackOrPath`.
 
+## Changelog
+
+### [0.1.0] - 2020-09-30
+**Added**:
+- `vidarNode` - the vidar wrapper
+- `Movie#recordRaw` - a convenience method for recording in the vidar wrapper
+
+[0.1.0]: https://github.com/clabe45/vidar-node/releases/tag/v0.1.0
+
 ## Contributing
 
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.

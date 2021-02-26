@@ -21,6 +21,6 @@
   "dependencies": {
     "mime": "^2.4.4",
     "puppeteer": "^3.0.0",
-    "vidar": "^0.6.0"
+    "vidar": "^0.7.0"
   }
 }

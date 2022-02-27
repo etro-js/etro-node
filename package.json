@@ -1,7 +1,7 @@
 {
-  "name": "vidar-node",
+  "name": "etro-node",
   "version": "0.1.0",
-  "description": "A wrapper to run Vidar in Node",
+  "description": "A wrapper to run Etro in Node",
   "main": "src/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -12,15 +12,15 @@
     "api-driven",
     "node"
   ],
-  "author": "clabe45",
+  "author": "Caleb Sacks (https://calebsacks.me)",
   "license": "GPL-3.0",
   "repository": {
     "type": "git",
-    "url": "https://github.com/clabe45/vidar-node.git"
+    "url": "https://github.com/etro-js/etro-node.git"
   },
   "dependencies": {
     "mime": "^2.4.4",
     "puppeteer": "^3.0.0",
-    "vidar": "^0.7.0"
+    "etro": "^0.7.0"
   }
 }

@@ -43,8 +43,8 @@ const getMetadata = async (page, id, source) => {
 }
 
 /**
- * Runs vidarFunction in a browser with inputSources loaded as html elements.
- * @param {function} vidarFunction
+ * Runs etroFunction in a browser with inputSources loaded as html elements.
+ * @param {function} etroFunction
  * @param {Object.<string, <string|RawSource>>} inputSources - the input assets, mapped from id to path or raw data
  * @param {string|function} resultCallbackOrPath the - output path or callback
  * @param {Page} [page] - an existing puppeteer page to use
@@ -54,7 +54,7 @@ const getMetadata = async (page, id, source) => {
  * @property {string} type - the MIME type of the media
  * @property {Buffer} data
  */
-const vidarNode = async (vidarFunction, inputSources, resultCallbackOrPath, page=undefined) => {
+const etroNode = async (etroFunction, inputSources, resultCallbackOrPath, page=undefined) => {
   // Set up page
   let browser
   if (!page) {
@@ -94,7 +94,7 @@ const vidarNode = async (vidarFunction, inputSources, resultCallbackOrPath, page
   }
 
   // Define `done` function (to be called when the video is done exporting)
-  // I wish I could avoid using globals for this, but I don't know how to pass it to vidarFunction 
+  // I wish I could avoid using globals for this, but I don't know how to pass it to etroFunction 
   // correctly (without causing problems).
   await page.exposeFunction('done', byteArray => {
     const buffer = Buffer.from(byteArray)
@@ -107,10 +107,10 @@ const vidarNode = async (vidarFunction, inputSources, resultCallbackOrPath, page
     })
   })
 
-  await page.evaluate(vidarFunction)
+  await page.evaluate(etroFunction)
   await page.waitFor(() => window._doneExporting, { timeout: 0 })
   if (browser)
     await browser.close()
 }
 
-module.exports = vidarNode
+module.exports = etroNode

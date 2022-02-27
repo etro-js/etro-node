@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <script src="../node_modules/vidar/dist/vidar-iife.js"></script>
+  <script src="../node_modules/etro/dist/etro-iife.js"></script>
   <script>
     (function () {
       function readBlob (blob) {
@@ -18,7 +18,7 @@
         })
       }
 
-      // Until Vidar supports exporting streams, use this custom method.
+      // Until Etro supports exporting streams, use this custom method.
       /**
        * Exports the movie as a byte array
        * The reason for this method is that passing blobs to node causes problems,
@@ -26,11 +26,11 @@
        *
        * @return {Promise<number[]>} the byte array
        */
-      vd.Movie.prototype.recordRaw = function () {
+      etro.Movie.prototype.recordRaw = function () {
         var that = this
         var args = arguments
         return new Promise(function (resolve, reject) {
-          vd.Movie.prototype.record.apply(that, args)
+          etro.Movie.prototype.record.apply(that, args)
             .then(function (blob) {
               readBlob(blob).then(resolve)
             })
